@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var missoula = {lat: 46.8680, lng:-113.9962};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: missoula
+        });
+
+        function displayCoordinates(pnt) {
+          var lat = pnt.lat();
+          lat = lat.toFixed(4);
+          var lng = pnt.lng();
+          lng = lng.toFixed(4);
+          console.log("Latitude: " + lat + "  Longitude: " + lng);
+      	}
+
+        var contentString = '<div id="content">'+
+	      '<div id="siteNotice">'+
+	      '</div>'+
+	      '<h1 id="firstHeading" class="firstHeading">Missoula</h1>'+
+	      '<div id="bodyContent">'+
+	      '<p><b>missoula</b>, also referred to as <b>The Bomb</b>, is a large ' +
+	      'sandstone rock formation in the southern part of the '+
+	      'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+	      'south west of the nearest large town, Alice Springs; 450&#160;km '+
+	      '(280&#160;mi) by road. Kata Tjuta and missoula are the two major '+
+	      'features of the missoula - Kata Tjuta National Park. missoula is '+
+	      'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+	      'Aboriginal people of the area. It has many springs, waterholes, '+
+	      'rock caves and ancient paintings. missoula is listed as a World '+
+	      'Heritage Site.</p>'+
+		  '<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Missoula_from_mt_sentinel.jpg" alt="Missoula_from_mt_sentinel" width="128" height="128">' +
+	      '</div>'+
+	      '</div>';
+
+	  	var infowindow = new google.maps.InfoWindow({
+	    	content: contentString
+	  	});
+
+        var marker = new google.maps.Marker({
+          position: missoula,
+          map: map
+        });
+
+        marker.addListener('mouseover', function() {
+		    infowindow.open(map, this);
+		});
+
+		// assuming you also want to hide the infowindow when user mouses-out
+		marker.addListener('mouseout', function() {
+		    infowindow.close();
+		});
+
+		google.maps.event.addListener(map, 'mousemove', function (event) {
+	        displayCoordinates(event.latLng);               
+	    });
+      }
+
+	 	
+
+	
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__Fas9K6g2z1UNPlB9LeYQdDaAt4tcN4&callback=initMap">
+    </script>
+  </body>
+</html>
+</body
