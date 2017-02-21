@@ -13,10 +13,12 @@
     <div id="map"></div>
     <script>
       function initMap() {
-        var missoula = {lat: 46.8680, lng:-113.9962};
+      	var start = {lat: 46.7916, lng:-110.8960};
+        var missoula = {lat: 46.7916, lng:-110.9962};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 6,
-          center: missoula
+          minZoom: 6,
+          center: start
         });
 
         function displayCoordinates(pnt) {
@@ -68,10 +70,6 @@
 	        displayCoordinates(event.latLng);               
 	    });
       }
-
-	 	
-
-	
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD__Fas9K6g2z1UNPlB9LeYQdDaAt4tcN4&callback=initMap">
