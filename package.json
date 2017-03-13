@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ed42311/googleMapsApi/issues"
   },
-  "homepage": "https://github.com/ed42311/googleMapsApi#readme"
+  "homepage": "https://github.com/ed42311/googleMapsApi#readme",
+  "dependencies": {
+    "connect": "^3.6.0",
+    "serve-static": "^1.12.1"
+  }
 }
